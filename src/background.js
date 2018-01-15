@@ -5,6 +5,8 @@
 var session = null;
 var pooling_time = 300;
 
+console.log('[DEBUG] esta pasando por aca - 2018-01-14');
+
 // Function searching for new printers or remove then if disconnected.
 function poolingPrinter() {
     setTimeout(function(){
@@ -47,8 +49,25 @@ function login(callback) {
     };
 
     // Login.
+    console.log('[DEBUG] Antes de hacer el login');
+    var xhr_login = new XMLHttpRequest;
+    xhr_login.open("GET", chrome.runtime.getURL("status.json"));
+    console.log('[DEBUG] despues de leer',xhr_login);
+    xhr_login.onreadystatechange = function() {
+      if (this.readyState == 4) {
+	 console.log("[DEBUG] leyendo el json");
+         console.log("[DEBUG] request finished, now parsing",xhr_login.responseText,xhr_login.responseText.server.database,xhr_login.responseText.server.host);
+         //window.json_text = xhr_login.responseText;
+         //window.parsed_json = JSON.parse(xhr_login.responseText);
+         //console.log("[DEBUG] parse results:");
+         //console.dir(window.parsed_json);
+        }
+     };
+    //xhr_login.send();
     chrome.storage.local.get(['server', 'session_id'], function(value) {
-        console.debug("[SES] Creating the session.");
+	value.server = undefined;
+	value.session_id = undefined;
+        console.debug("[SES] Creating the session.", value);
         session = new oerpSession(value.server, value.session_id);
         session.addListener('login', function(s) {
             console.log("Successful login.");

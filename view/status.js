@@ -84,7 +84,9 @@ var buttons_html="\
 ";
 
 // Default values for form.
+console.log('[DEBUG] va a leer del storage');
 chrome.storage.local.get(['server', 'session_id'], function(value) {
+    console.log('[DEBUG] paso por aca');
     server.text.value = value.server;
 });
 
@@ -164,6 +166,7 @@ function set_state(_state) {
                     fpoc_server.database,
                     fpoc_server.user,
        	            fpoc_server.pwd,
+       	            fpoc_server.host,
                	    function(result){
                        	if (result && session.session_id && session.uid) {
                             finish();
@@ -373,6 +376,7 @@ cancel_button.onclick = function(event) {
 }
 
 console.log('[DEBUG] empezando por aca');
+console.log('[DEBUG] window.session', window.session);
 var x = setInterval(function() {
     console.log('[DEBUG] pasando por el timer');
     if (printer_table.rows.length == 0) {
@@ -392,15 +396,30 @@ console.log('JSON ',fpoc_server.pwd);
 
 
 do_message("Start window");
+
+new_finish = function() {
+        update_view();
+        unblock_screen();
+    }
+
+
 if (window.session && window.session.session_id) {
     set_state('online');
 } else {
-    if (window.session.server) server_input.value = session.server;
+    console.log('[DEBUG] esta entrando por aca', window.session, session);
+    if (window.session.server) {
+	server_input.value = session.server;
+	} else {
+		console.log('[DEBUG] no va a ningun lado', fpoc_server.host);
+                load_databases(fpoc_server.host,new_finish);
+	};
     set_state('url');
 };
 update();
 
 window.session.onchange = function() { update_view(); }
+
+
 
 // sencillo
 // awbxukki

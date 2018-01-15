@@ -278,11 +278,11 @@ oerpSession = function(server, session_id) {
     // Authenticate user in a db with a password.
     // NADIE LO USA!
     //
-    this.authenticate = function(db, login, password, callback) {
+    this.authenticate = function(db, login, password, host, callback) {
         var self = this;
         var callback=callback;
         var old_uid = self.uid;
-        var params = { db: db, login: login, password: password, base_location: self.server };
+	var params = { db: db, login: login, password: password, base_location: self.server };
 	console.log('[DEBUG] authenticate',params);
         var _callback = function(mess, result) {
             if (mess == "done") {

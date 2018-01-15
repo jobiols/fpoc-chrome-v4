@@ -1,1 +1,1 @@
-data = '[{"database" : "nuskin_pos_v3", "host" : "http://localhost:8069", "pwd" : "admin", "user" : "admin"}]';
+data = '[{"database" : "desidio", "host" : "http://localhost:8069", "pwd" : "admin", "user" : "admin"}]';
