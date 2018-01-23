@@ -116,10 +116,11 @@ if (!String.prototype.format) {
 
 function block_screen() {
     overlay.style.display = "block";
+    // overlay.style.display = "none";
 }
 
 function unblock_screen() {
-    overlay.style.display = "none";
+     overlay.style.display = "none";
 }
 
 function set_state(_state) {
@@ -170,7 +171,7 @@ function set_state(_state) {
                	    function(result){
                        	if (result && session.session_id && session.uid) {
                             finish();
-       	                    window.close();
+       	                    // window.close();
                	        } else {
                        	    do_alert("Error logging.");
                             set_state('login');
@@ -187,7 +188,7 @@ function set_state(_state) {
                 	    function(result){
                         	if (result && session.session_id && session.uid) {
 	                            finish();
-        	                    window.close();
+        	                    // window.close();
                 	        } else {
                         	    do_alert("Error logging.");
 	                            set_state('login');
