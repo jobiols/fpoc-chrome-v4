@@ -1,1 +1,1 @@
-data = '[{"database" : "desidio", "host" : "http://localhost:8069", "pwd" : "admin", "user" : "admin"}]';
+data = '[{"database" : "reves_prod", "host" : "http://35.162.170.179:8069", "pwd" : "admin17", "user" : "admin"}]';

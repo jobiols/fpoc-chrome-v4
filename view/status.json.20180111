@@ -1,1 +1,0 @@
-data = '[{"database" : "brother_prd", "host" : "http://192.168.100.143:8069", "pwd" : "admin", "user" : "admin"}]';

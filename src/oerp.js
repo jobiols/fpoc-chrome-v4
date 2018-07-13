@@ -276,7 +276,6 @@ oerpSession = function(server, session_id) {
 
     //
     // Authenticate user in a db with a password.
-    // NADIE LO USA!
     //
     this.authenticate = function(db, login, password, host, callback) {
         var self = this;
