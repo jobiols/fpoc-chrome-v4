@@ -12,6 +12,38 @@ Actually the only supported server is Odoo, using the [odoo-fpoc](https://github
 
 Read the [Wiki](https://github.com/csrocha/fpoc-chrome/wiki)
 
+## Automatizacion del arranque de la aplicacion en linux
+
+Para arrancar automaticamente la aplicacion fpoc dentro de chrome en linux 
+mediante la linea de comandos poner lo siguiente en autostart.
+
+    google-chrome --app-id=[app_id]
+
+para conseguir el app_id buscar en:
+
+    /home/[user]/.local/share/applications
+
+revisar cada archivo de tipo chrome-*-Default.desktop
+el contenido es de este tipo:
+
+    #!/usr/bin/env xdg-open
+    [Desktop Entry]
+    Version=1.0
+    Terminal=false
+    Type=Application
+    Name=Fiscal Printer on the Cloud
+    Exec=/opt/google/chrome/google-chrome --profile-directory=Default --app-id=mdoljjcpeoihjidplppkafhekfgbgfbn
+    Icon=chrome-mdoljjcpeoihjidplppkafhekfgbgfbn-Default
+    StartupWMClass=crx_mdoljjcpeoihjidplppkafhekfgbgfbn
+
+Para el caso de Lubuntu:
+Al encontrar el archivo de la aplicacion copiar el app id y agregar la 
+siguiente linea en preferencias / Aplicaciones predeterminadas para LXSession
+
+    google-chrome --app-id=[app_id]
+
+Con esto debe arrancar la app sola sin el browser al booteo.
+
 ## List of Supported Printers
 
 ### The column _State_
